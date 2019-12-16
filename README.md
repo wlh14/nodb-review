@@ -43,20 +43,20 @@ We're building a shopping list, and here's our plan:
 state = {     |       | |           | |         | props = {
   item: ''    |Form.js| | Header.js | | List.js |   list: [],
   quantity: 1 |_______| |___________| |_________|   updateItem(),
-}                                      \            deleteItem()
-                                        \         }
-                                         \
-                                         _\_________
-                                        |           | state = {
-                                        |ListItem.js|   isEditable: false,
-                                        |___________|   item: '',
-                                                        quantity: 1,
-                                                        done: false
-                                                      }
-                                                      props = {
-                                                         updateItem(),
-                                                         delteItem()
-                                                      }
+}                                             \     deleteItem()
+                                               \  }
+                                                \
+                                                _\_________
+                                               |           | state = {
+                                               |ListItem.js|   isEditable: false,
+                                               |___________|   item: '',
+                                                               quantity: 1,
+                                                               done: false
+                                                             }
+                                                             props = {
+                                                                updateItem(),
+                                                                delteItem()
+                                                             }
 ```
 
 ### 
