@@ -37,10 +37,11 @@ export default class ListItem extends Component {
     this.toggleEdit()
   }
 
-  async toggleDone() {
-    await this.setState({done: !this.state.done})
-    const {item, quantity, done} = this.state
-    this.props.updateFn({item, quantity, done}, this.props.data.id)
+  toggleDone() {
+    this.setState({done: !this.state.done}, () => {  // the callback function here ensures that the logic inside will be run AFTER state changes
+      const {item, quantity, done} = this.state
+      this.props.updateFn({item, quantity, done}, this.props.data.id)
+    })
   }
 
   render() {
