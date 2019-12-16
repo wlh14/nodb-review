@@ -32,8 +32,15 @@ export default class ListItem extends Component {
   }
 
   save() {
-    this.props.updateFn()
+    const {item, quantity, done} = this.state
+    this.props.updateFn({item, quantity, done}, this.props.data.id)
     this.toggleEdit()
+  }
+
+  async toggleDone() {
+    await this.setState({done: !this.state.done})
+    const {item, quantity, done} = this.state
+    this.props.updateFn({item, quantity, done}, this.props.data.id)
   }
 
   render() {
@@ -54,9 +61,10 @@ export default class ListItem extends Component {
           </div>
         ) : (
           <div>
-            <h2>{this.state.quantity}</h2>
-            <h3>{this.state.item}</h3>
-            <button onClick={() => this.props.deleteFn()}>Delete</button>
+            <input type="checkbox" checked={this.state.done} onChange={() => this.toggleDone()} />
+            <h2 style={this.state.done ? {textDecoration: 'line-through'} : null}>{this.state.quantity}</h2>
+            <h3 style={this.state.done ? {textDecoration: 'line-through'} : null}>{this.state.item}</h3>
+            <button onClick={() => this.props.deleteFn(this.props.data.id)}>Delete</button>
             <button onClick={() => this.toggleEdit()}>Edit</button>
           </div>
         )}

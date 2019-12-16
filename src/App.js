@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   addItem(newItem) {
-    axios.post('/api/list', {newItem}).then(res => {
+    axios.post('/api/list', { newItem }).then(res => {
       this.setState({
         list: res.data
       })
@@ -33,7 +33,7 @@ class App extends React.Component {
   }
 
   updateItem(updatedInfo, id) {
-    axios.put(`/api/list/${id}`, {updatedInfo}).then(res => {
+    axios.put(`/api/list/${id}`, { updatedInfo }).then(res => {
       this.setState({
         list: res.data
       })
@@ -54,7 +54,11 @@ class App extends React.Component {
         <Header />
         <main>
           <Form addFn={this.addItem} />
-          <List deleteFn={this.removeItem} updateFn={this.updateItem} data={this.state.list} />
+          <List
+            deleteFn={this.removeItem}
+            updateFn={this.updateItem}
+            data={this.state.list}
+          />
         </main>
       </div>
     )
