@@ -47,6 +47,16 @@ state = {     |       | |           | |         | props = {
                                         \         }
                                          \
                                          _\_________
-                                        |           |
-                                        |ListItem.js|
-                                        |___________|
+                                        |           | state = {
+                                        |ListItem.js|   isEditable: false,
+                                        |___________|   item: '',
+                                                        quantity: 1,
+                                                        done: false
+                                                      }
+                                                      props = {
+                                                         updateItem(),
+                                                         delteItem()
+                                                      }
+```
+
+### 
